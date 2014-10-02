@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{219C31FC-401C-4EAA-BDDC-59D5636CF436}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Context.Core</RootNamespace>
+    <AssemblyName>Context.Core</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json.Net20, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\Json35\Newtonsoft.Json.Net20.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\FileMonitor.cs">
+      <Link>Helpers\FileMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\FileUtils.cs">
+      <Link>Helpers\FileUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\GZipStreamHelper.cs">
+      <Link>Helpers\GZipStreamHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\ProcessUtils.cs">
+      <Link>Helpers\ProcessUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\ServiceUtils.cs">
+      <Link>Helpers\ServiceUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\StringHelpers.cs">
+      <Link>Helpers\StringHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SystemUtils.cs">
+      <Link>Helpers\SystemUtils.cs</Link>
+    </Compile>
+    <Compile Include="CommandBars\Command.cs" />
+    <Compile Include="CommandBars\CommandGroup.cs" />
+    <Compile Include="CommandBars\CommandService.cs" />
+    <Compile Include="CommandBars\CommandTarget.cs" />
+    <Compile Include="Configuration\ConfigurationManagerService.cs" />
+    <Compile Include="Configuration\ConfigurationSectionHandler.cs" />
+    <Compile Include="Configuration\ProductInfo.cs" />
+    <Compile Include="ConsoleApplication.cs" />
+    <Compile Include="Services\ContextScope.cs" />
+    <Compile Include="Services\ContextService.cs" />
+    <Compile Include="Common\CustomerService.cs" />
+    <Compile Include="CustomerServiceReference\CustomerInfo.cs" />
+    <Compile Include="Documents\DocumentService.cs" />
+    <Compile Include="Services\ExternalModule.cs" />
+    <Compile Include="Documents\HierarchyService.cs" />
+    <Compile Include="CommandBars\ModuleCommandTarget.cs" />
+    <Compile Include="Services\ModuleInfo.cs" />
+    <Compile Include="Services\ModuleManager.cs" />
+    <Compile Include="UI\ModuleWindowFactory.cs" />
+    <Compile Include="Services\PersistentFile.cs" />
+    <Compile Include="Services\PersistentFileManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ResourceManager.cs" />
+    <Compile Include="Services\RunOptions.cs" />
+    <Compile Include="Services\ServiceModule.cs" />
+    <Compile Include="ServiceRoot.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="Services\Context.cs" />
+    <Compile Include="Configuration\ConfigurationSectionDefault.cs" />
+    <Compile Include="Schema\SchemaService.cs" />
+    <Compile Include="Common\SystemInfo.cs" />
+    <Compile Include="Web References\CustomerServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/Customer.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CustomerServiceReference\</RelPath>
+      <UpdateFromURL>http://localhost/Customer.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CustomerServiceReference_Customer</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\CustomerServiceReference\Customer.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CustomerServiceReference\Customer.disco" />
+    <None Include="Web References\CustomerServiceReference\CustomerInfo1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CustomerServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Context.Interfaces\Context.Interfaces.csproj">
+      <Project>{05379526-6533-4228-BFA9-1024184FF5A1}</Project>
+      <Name>Context.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(TargetDir)*.dll $(SolutionDir)..\bin\net20 /I /Y /R</PostBuildEvent>
+  </PropertyGroup>
+</Project>

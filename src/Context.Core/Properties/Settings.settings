@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Context.Core.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CustomerServiceReference_Customer" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/Customer.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

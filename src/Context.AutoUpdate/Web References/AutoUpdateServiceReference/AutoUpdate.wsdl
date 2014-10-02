@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetUpdates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="systemInfo" type="tns:SystemInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="productInfo" type="tns:ProductInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SystemInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SystemName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SystemVersionLabel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComponentInfos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CultureName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProductInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductVersionLabel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuildTypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Edition" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CultureName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstalledAt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUpdatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUpdatesResult" type="tns:Package" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Package">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstallScript" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductVersionLabel" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRestartRequired" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRestartUIRequired" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfPackageItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPackageItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PackageItem" nillable="true" type="tns:PackageItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PackageItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DownloadPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TargetPath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdatePath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssemblyPublicKey" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="MD5Hash" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileVersionLabel" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FileSize" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRestartRequired" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUpdatesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdates" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdatesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdatesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AutoUpdateSoap">
+    <wsdl:operation name="GetUpdates">
+      <wsdl:input message="tns:GetUpdatesSoapIn" />
+      <wsdl:output message="tns:GetUpdatesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AutoUpdateSoap" type="tns:AutoUpdateSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUpdates">
+      <soap:operation soapAction="http://tempuri.org/GetUpdates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AutoUpdateSoap12" type="tns:AutoUpdateSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUpdates">
+      <soap12:operation soapAction="http://tempuri.org/GetUpdates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AutoUpdate">
+    <wsdl:port name="AutoUpdateSoap" binding="tns:AutoUpdateSoap">
+      <soap:address location="http://localhost:18080/AutoUpdate.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AutoUpdateSoap12" binding="tns:AutoUpdateSoap12">
+      <soap12:address location="http://localhost:18080/AutoUpdate.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

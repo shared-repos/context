@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{05379526-6533-4228-BFA9-1024184FF5A1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Context.Interfaces</RootNamespace>
+    <AssemblyName>Context.Interfaces</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\StringHelpers.cs">
+      <Link>Helpers\StringHelpers.cs</Link>
+    </Compile>
+    <Compile Include="AutoUpdate\UpdateStatusEventHandler.cs" />
+    <Compile Include="AutoUpdate\IAutoUpdateService.cs" />
+    <Compile Include="AutoUpdate\IDownloadRequestStatus.cs" />
+    <Compile Include="AutoUpdate\IDownloadService.cs" />
+    <Compile Include="AutoUpdate\DownloadStatus.cs" />
+    <Compile Include="AutoUpdate\DownloadStatusCallback.cs" />
+    <Compile Include="AutoUpdate\IPackage.cs" />
+    <Compile Include="AutoUpdate\IPackageItem.cs" />
+    <Compile Include="AutoUpdate\IUpdateHistory.cs" />
+    <Compile Include="AutoUpdate\UpdateStatus.cs" />
+    <Compile Include="Common\ICustomerInfo.cs" />
+    <Compile Include="Common\ICustomerService.cs" />
+    <Compile Include="Common\ISystemInfo.cs" />
+    <Compile Include="Common\SystemID.cs" />
+    <Compile Include="Communication\CommunicationErrorEventArgs.cs" />
+    <Compile Include="Communication\MessageAddress.cs" />
+    <Compile Include="Communication\MessageAttachment.cs" />
+    <Compile Include="Communication\ProgressEventArgs.cs" />
+    <Compile Include="Content\Persistance\IMemberMapping.cs" />
+    <Compile Include="Content\Persistance\IContentReader.cs" />
+    <Compile Include="Content\Persistance\IPersister.cs" />
+    <Compile Include="Content\Persistance\IPersisterFactories.cs" />
+    <Compile Include="Content\Persistance\IPersisterFactory.cs" />
+    <Compile Include="Content\Persistance\IRelationMapping.cs" />
+    <Compile Include="Content\Query\IContentId.cs" />
+    <Compile Include="Content\Query\IContentQuery.cs" />
+    <Compile Include="Content\Query\IQuery.cs" />
+    <Compile Include="Data\IDataRow.cs" />
+    <Compile Include="Data\IDataService.cs" />
+    <Compile Include="Data\IDataSource.cs" />
+    <Compile Include="Data\IDataTable.cs" />
+    <Compile Include="Evaluator\IEvaluationScope.cs" />
+    <Compile Include="Evaluator\IValue.cs" />
+    <Compile Include="Evaluator\IVariable.cs" />
+    <Compile Include="Logging\ILog.cs" />
+    <Compile Include="Logging\ILogService.cs" />
+    <Compile Include="Objects\IObjectContext.cs" />
+    <Compile Include="Objects\IObjectContextFactory.cs" />
+    <Compile Include="Objects\ITransaction.cs" />
+    <Compile Include="Objects\ObjectContextChangeEventArgs.cs" />
+    <Compile Include="Objects\ObjectContextChangeEventHandler.cs" />
+    <Compile Include="Objects\ObjectContextItemStateChangeEventArgs.cs" />
+    <Compile Include="Objects\ObjectContextItemStateChangeEventHandler.cs" />
+    <Compile Include="Objects\ObjectState.cs" />
+    <Compile Include="Objects\RefreshMode.cs" />
+    <Compile Include="Objects\TransactionState.cs" />
+    <Compile Include="Evaluator\IEvaluationContext.cs" />
+    <Compile Include="Evaluator\IEvaluationEngine.cs" />
+    <Compile Include="Evaluator\IEvaluator.cs" />
+    <Compile Include="Schema\ISchemaService.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Services\IContextService.cs" />
+    <Compile Include="Services\IExternalModule.cs" />
+    <Compile Include="Services\IIdleService.cs" />
+    <Compile Include="Services\IServiceInstaller.cs" />
+    <Compile Include="System\AsyncExceptionEventArgs.cs" />
+    <Compile Include="System\AsyncOperationEventArgs.cs" />
+    <Compile Include="Common\BuildType.cs" />
+    <Compile Include="System\IAsyncOperation.cs" />
+    <Compile Include="Common\IProductInfo.cs" />
+    <Compile Include="Common\ProductType.cs" />
+    <Compile Include="Communication\ICommunicationChannel.cs" />
+    <Compile Include="Communication\ICommunicationHub.cs" />
+    <Compile Include="Communication\ICommunicationManager.cs" />
+    <Compile Include="Communication\SimpleMessage.cs" />
+    <Compile Include="Configuration\IConfigurationManager.cs" />
+    <Compile Include="Configuration\IConfigurationPage.cs" />
+    <Compile Include="Configuration\IConfigurationProvider.cs" />
+    <Compile Include="Configuration\IConfigurationSection.cs" />
+    <Compile Include="Content\DeleteRule.cs" />
+    <Compile Include="Content\IContentMember.cs" />
+    <Compile Include="Content\IContentFile.cs" />
+    <Compile Include="Content\IContentItem.cs" />
+    <Compile Include="Content\IContentProvider.cs" />
+    <Compile Include="Content\IContentRelation.cs" />
+    <Compile Include="Content\IContentService.cs" />
+    <Compile Include="Content\IContentType.cs" />
+    <Compile Include="Content\Hierarchy\IHierarchy.cs" />
+    <Compile Include="Content\Hierarchy\IHierarchyFactory.cs" />
+    <Compile Include="Content\Hierarchy\IHierarchyNode.cs" />
+    <Compile Include="Content\Hierarchy\IHierarchyService.cs" />
+    <Compile Include="Hosting\IApplicationRuntime.cs" />
+    <Compile Include="Hosting\IWebApplication.cs" />
+    <Compile Include="Hosting\IWebServer.cs" />
+    <Compile Include="Hosting\IWebSite.cs" />
+    <Compile Include="Hosting\ServerState.cs" />
+    <Compile Include="Rules\IRule.cs" />
+    <Compile Include="Rules\IRuleDefinition.cs" />
+    <Compile Include="Rules\IRuleEngine.cs" />
+    <Compile Include="Rules\IScheduledItem.cs" />
+    <Compile Include="Rules\IScheduler.cs" />
+    <Compile Include="Rules\ScheduledItemEventHandler.cs" />
+    <Compile Include="Services\IContext.cs" />
+    <Compile Include="Services\IPreLoadService.cs" />
+    <Compile Include="Services\IPropertyProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ClosingEventHandler.cs" />
+    <Compile Include="Services\IModule.cs" />
+    <Compile Include="Services\IModuleInfo.cs" />
+    <Compile Include="Services\IModuleManager.cs" />
+    <Compile Include="Services\IPersistentFile.cs" />
+    <Compile Include="Services\IPersistentFileManager.cs" />
+    <Compile Include="Services\IResourceManager.cs" />
+    <Compile Include="Services\IServiceManager.cs" />
+    <Compile Include="Services\IStartupObject.cs" />
+    <Compile Include="Services\ModulesUnloadingEventHandler.cs" />
+    <Compile Include="Services\PersistentFileEventHandler.cs" />
+    <Compile Include="Data\IDataProvider.cs" />
+    <Compile Include="UI\CommandBars\CommandBarControlBehavior.cs" />
+    <Compile Include="UI\CommandBars\CommandBarControlType.cs" />
+    <Compile Include="UI\CommandBars\CommandBarType.cs" />
+    <Compile Include="UI\CommandBars\CommandStatus.cs" />
+    <Compile Include="UI\CommandBars\ICommand.cs" />
+    <Compile Include="UI\CommandBars\ICommandBar.cs" />
+    <Compile Include="UI\CommandBars\ICommandBarControl.cs" />
+    <Compile Include="UI\CommandBars\ICommandBarService.cs" />
+    <Compile Include="UI\CommandBars\ICommandService.cs" />
+    <Compile Include="UI\CommandBars\ICommandTarget.cs" />
+    <Compile Include="UI\CommandBars\ShortcutEntry.cs" />
+    <Compile Include="UI\CommandBars\Visibility.cs" />
+    <Compile Include="UI\Documents\DocumentClosingEventHandler.cs" />
+    <Compile Include="UI\Documents\DocumentEventHandler.cs" />
+    <Compile Include="UI\Documents\DocumentSavedEventHandler.cs" />
+    <Compile Include="UI\Documents\DocumentSavingEventHandler.cs" />
+    <Compile Include="UI\Documents\HierarchyAsyncErrorEventArgs.cs" />
+    <Compile Include="UI\Documents\HierarchyErrorAction.cs" />
+    <Compile Include="UI\Documents\HierarchyEventHandler.cs" />
+    <Compile Include="UI\Documents\IDocument.cs" />
+    <Compile Include="UI\Documents\IDocumentFactory.cs" />
+    <Compile Include="UI\Documents\IDocumentService.cs" />
+    <Compile Include="UI\Documents\IDocumentView.cs" />
+    <Compile Include="UI\Documents\IHierarchy.cs" />
+    <Compile Include="UI\Documents\IHierarchyFactory.cs" />
+    <Compile Include="UI\Documents\IHierarchyService.cs" />
+    <Compile Include="UI\Documents\IHierarchyView.cs" />
+    <Compile Include="UI\Documents\INode.cs" />
+    <Compile Include="UI\Documents\NodeAddedEventArgs.cs" />
+    <Compile Include="UI\Documents\NodeEventArgs.cs" />
+    <Compile Include="UI\Documents\SaveOptions.cs" />
+    <Compile Include="UI\DocumentWindowEventHandler.cs" />
+    <Compile Include="UI\IDocumentWindow.cs" />
+    <Compile Include="UI\IMainFormProvider.cs" />
+    <Compile Include="UI\ISelection.cs" />
+    <Compile Include="UI\ISetupUI.cs" />
+    <Compile Include="UI\IStatusBarService.cs" />
+    <Compile Include="UI\IToolWindow.cs" />
+    <Compile Include="UI\IToolWindowContent.cs" />
+    <Compile Include="UI\IWindow.cs" />
+    <Compile Include="UI\IWindowFactory.cs" />
+    <Compile Include="UI\IWindowService.cs" />
+    <Compile Include="UI\SelectionTypes.cs" />
+    <Compile Include="UI\WindowBehavior.cs" />
+    <Compile Include="UI\WindowEventHandler.cs" />
+    <Compile Include="UI\WindowLayout.cs" />
+    <Compile Include="UI\WindowVisibility.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(TargetDir)*.dll $(SolutionDir)..\bin\net20 /I /Y /R</PostBuildEvent>
+  </PropertyGroup>
+</Project>

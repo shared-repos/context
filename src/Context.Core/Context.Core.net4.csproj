@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4F424314-109C-4478-A227-0CBDCC1D034B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Context.Core</RootNamespace>
+    <AssemblyName>Context.Core</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>false</SignAssembly>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Repository\Json40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Shared\FileMonitor.cs">
+      <Link>Helpers\FileMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\FileUtils.cs">
+      <Link>Helpers\FileUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\GZipStreamHelper.cs">
+      <Link>Helpers\GZipStreamHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\ProcessUtils.cs">
+      <Link>Helpers\ProcessUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\ServiceUtils.cs">
+      <Link>Helpers\ServiceUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\StringHelpers.cs">
+      <Link>Helpers\StringHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\Shared\SystemUtils.cs">
+      <Link>Helpers\SystemUtils.cs</Link>
+    </Compile>
+    <Compile Include="CommandBars\Command.cs" />
+    <Compile Include="CommandBars\CommandGroup.cs" />
+    <Compile Include="CommandBars\CommandService.cs" />
+    <Compile Include="CommandBars\CommandTarget.cs" />
+    <Compile Include="Configuration\ConfigurationManagerService.cs" />
+    <Compile Include="Configuration\ConfigurationSectionHandler.cs" />
+    <Compile Include="Configuration\ProductInfo.cs" />
+    <Compile Include="ConsoleApplication.cs" />
+    <Compile Include="Services\ContextScope.cs" />
+    <Compile Include="Services\ContextService.cs" />
+    <Compile Include="Common\CustomerService.cs" />
+    <Compile Include="CustomerServiceReference\CustomerInfo.cs" />
+    <Compile Include="Documents\DocumentService.cs" />
+    <Compile Include="Services\ExternalModule.cs" />
+    <Compile Include="Documents\HierarchyService.cs" />
+    <Compile Include="CommandBars\ModuleCommandTarget.cs" />
+    <Compile Include="Services\ModuleInfo.cs" />
+    <Compile Include="Services\ModuleManager.cs" />
+    <Compile Include="UI\ModuleWindowFactory.cs" />
+    <Compile Include="Services\PersistentFile.cs" />
+    <Compile Include="Services\PersistentFileManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ResourceManager.cs" />
+    <Compile Include="Services\RunOptions.cs" />
+    <Compile Include="Services\ServiceModule.cs" />
+    <Compile Include="ServiceRoot.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="Services\Context.cs" />
+    <Compile Include="Configuration\ConfigurationSectionDefault.cs" />
+    <Compile Include="Schema\SchemaService.cs" />
+    <Compile Include="Common\SystemInfo.cs" />
+    <Compile Include="Web References\CustomerServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/Customer.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CustomerServiceReference\</RelPath>
+      <UpdateFromURL>http://localhost/Customer.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CustomerServiceReference_Customer</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\CustomerServiceReference\Customer.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CustomerServiceReference\Customer.disco" />
+    <None Include="Web References\CustomerServiceReference\CustomerInfo1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CustomerServiceReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Context.Interfaces\Context.Interfaces.net4.csproj">
+      <Project>{400acb6d-8b23-483e-8371-964c8a42db3d}</Project>
+      <Name>Context.Interfaces.net4</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy $(TargetDir)*.dll $(SolutionDir)..\bin\net40 /I /Y /R</PostBuildEvent>
+  </PropertyGroup>
+</Project>
