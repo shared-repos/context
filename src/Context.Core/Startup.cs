@@ -226,7 +226,7 @@ namespace Context.Core
         private string BuildComponentInfos()
         {
             StringBuilder sb = new StringBuilder();
-            var netVersion = Environment.Version;
+            var netVersion = new Version(GetType().Assembly.ImageRuntimeVersion.TrimStart('v'));
             netVersion = new Version(netVersion.Major, netVersion.Minor, netVersion.Build);
             sb.Append(".NET Framework ");
             sb.Append(netVersion.ToString());

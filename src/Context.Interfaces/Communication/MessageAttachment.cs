@@ -15,5 +15,9 @@ namespace Context.Interfaces.Communication
         public Stream Content { get; set; }
 
         public string MediaType { get; set; }
+
+        public DateTime Created { get; set; }
+
+        public DateTime Modified { get; set; }
     }
 }

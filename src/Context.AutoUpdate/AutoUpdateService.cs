@@ -65,6 +65,7 @@ namespace Context.AutoUpdate
         private readonly bool checkOnStart;
         private readonly string updateSignal;
         private readonly string uiExecutablePath;
+        private readonly string executablePath;
         private readonly string serviceUrl;
         private readonly string updateServicePath;
         private readonly ICustomerService customerService;
@@ -99,6 +100,7 @@ namespace Context.AutoUpdate
             checkOnStart = Convert.ToBoolean(context[CheckOnStartSettings], CultureInfo.InvariantCulture);
             updateSignal = Convert.ToString(context[UpdateSignalSettings]);
             uiExecutablePath = FileUtils.GetAbsolutePath(Convert.ToString(context[UIExecutablePathSettings]));
+            executablePath = FileUtils.EntryFile;
             updateServicePath = FileUtils.GetAbsolutePath(Convert.ToString(context[UpdateServicePath]));
             serviceUrl = Convert.ToString(context[ServiceUrlSettings]);
 
@@ -346,19 +348,36 @@ namespace Context.AutoUpdate
                     }
 
                     IProductInfo productInfo = (IProductInfo)context.GetService(typeof(IProductInfo));
-                    SystemUtils.RegistrySetValues(Path.Combine(productInfo.OptionsRoot, UpdateArgumentsSubKey),
-                        ServiceNameKey, productInfo.ApplicationName,
-                        TempFileKey, tempFile,
-                        UIExecutablePathKey, uiExecutablePath,
-                        IsRestartRequiredKey, package.IsRestartRequired.ToString(),
-                        IsRestartUIRequiredKey, package.IsRestartUIRequired.ToString());
+                    bool portable = false;
+                    try
+                    {
+                        SystemUtils.RegistrySetValues(Path.Combine(productInfo.OptionsRoot, UpdateArgumentsSubKey),
+                            ServiceNameKey, productInfo.ApplicationName,
+                            TempFileKey, tempFile,
+                            UIExecutablePathKey, uiExecutablePath,
+                            IsRestartRequiredKey, package.IsRestartRequired.ToString(),
+                            IsRestartUIRequiredKey, package.IsRestartUIRequired.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Log(LogLevel.Error, context, "Error in StartUpdateThread: {0}:{1}, StackTrace: {2}", ex.GetType().Name, ex.Message, ex.StackTrace);
+                        logger.Log(LogLevel.Info, context, "Trying to update with portable flow");
+                        portable = true;
+                    }
 
                     if (package.IsRestartUIRequired)
                     {
                         SystemUtils.SetEventWaitHandle(updateSignal);
                     }
 
-                    StartUpdateProcess();
+                    if (portable)
+                    {
+                        StartPortableUpdateProcess(tempFile, package.IsRestartRequired, package.IsRestartUIRequired);
+                    }
+                    else
+                    {
+                        StartElevatedUpdateProcess();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -425,7 +444,21 @@ namespace Context.AutoUpdate
             return historyRow;
         }
 
-        private void StartUpdateProcess()
+        private void StartPortableUpdateProcess(string tempFile, bool isRestartRequired, bool isRestartUIRequired)
+        {
+            try
+            {
+                string uiExecutablePathLocal = isRestartUIRequired ? uiExecutablePath : "";
+                string executablePathLocal = isRestartRequired ? executablePath : "";
+                ProcessUtils.StartProcessNoWindow(updateServicePath, string.Format("Portable \"{0}\" \"{1}\" \"{2}\"", tempFile, uiExecutablePathLocal, executablePathLocal));
+            }
+            catch (Exception ex)
+            {
+                logger.Log(LogLevel.Error, context, "Error in StartPortableUpdateProcess: {0}:{1}, StackTrace: {2}", ex.GetType().Name, ex.Message, ex.StackTrace);
+            }
+        }
+
+        private void StartElevatedUpdateProcess()
         {
             try
             {
@@ -433,7 +466,7 @@ namespace Context.AutoUpdate
             }
             catch (Exception ex)
             {
-                logger.Log(LogLevel.Error, context, "Error in StartUpdateProcess: {0}:{1}, StackTrace: {2}", ex.GetType().Name, ex.Message, ex.StackTrace);
+                logger.Log(LogLevel.Error, context, "Error in StartElevatedUpdateProcess: {0}:{1}, StackTrace: {2}", ex.GetType().Name, ex.Message, ex.StackTrace);
             }
         }
 
